@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import {BrowserRouter, Routes, Route, useParams} from 'react-router-dom';
+import {useState} from 'react';
 import initialArticles from './initial-articles';
 import ArticleView from './ArticleView';
 import ArticleNavBar from './ArticleNavBar';
@@ -10,55 +10,55 @@ import ArticleNavBar from './ArticleNavBar';
  */
 function App() {
 
-  const [articles, setArticles] = useState(initialArticles);
+    const [articles, setArticles] = useState(initialArticles);
 
-  return (
-    // Because we're using React Router, we should wrap all our other components in a Router.
-    <BrowserRouter>
-      <div className="container">
+    return (
+        // Because we're using React Router, we should wrap all our other components in a Router.
+        <BrowserRouter>
+            <div className="container">
 
-        <div className="sidebar">
-          <h1>Articles</h1>
-          <ArticleNavBar articles={articles} />
-        </div>
+                <div className="sidebar">
+                    <h1>Articles</h1>
+                    <ArticleNavBar articles={articles}/>
+                </div>
 
-        <main>
+                <main>
 
-          <div className="box">
+                    <div className="box">
 
-            {/* If the current URL path matches one of the Routes in this block, that route's element will be rendered.
+                        {/* If the current URL path matches one of the Routes in this block, that route's element will be rendered.
               All other components in this block will be ignored. In the case of multiple matches, only the first match
               will be rendered. */}
-            <Routes>
+                        <Routes>
 
-              {/* Shows how we can obtain a path parameter using : */}
-              <Route
-                path="/articles/:id"
-                element={<ArticleViewFromRoute articles={articles} />} />
+                            {/* Shows how we can obtain a path parameter using : */}
+                            <Route
+                                path="/articles/:id"
+                                element={<ArticleViewFromRoute articles={articles}/>}/>
 
-              {/* This path matches all URLs. Because it's defined last in the Routes block, it will only be rendered if
+                            {/* This path matches all URLs. Because it's defined last in the Routes block, it will only be rendered if
                 there are no other matches. This is a good way to make a default route. */}
-              <Route
-                path="*"
-                element={<h2>Please select an article to the left!</h2>} />
+                            <Route
+                                path="*"
+                                element={<h2>Please select an article to the left!</h2>}/>
 
-            </Routes>
+                        </Routes>
 
-          </div>
-        </main>
+                    </div>
+                </main>
 
-      </div>
-    </BrowserRouter>
-  );
+            </div>
+        </BrowserRouter>
+    );
 }
 
 /**
  * This component reads the "id" path parameter, and renders an <ArticleView> displaying the article
  * from the given list of articles with the matching id.
  */
-function ArticleViewFromRoute({ articles }) {
-  const { id } = useParams();
-  return <ArticleView article={articles.find(a => a.id == id)} />
+function ArticleViewFromRoute({articles}) {
+    const {id} = useParams();
+    return <ArticleView article={articles.find(a => a.id == id)}/>
 }
 
 export default App;

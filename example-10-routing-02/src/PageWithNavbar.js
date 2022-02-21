@@ -1,14 +1,14 @@
-import { Outlet } from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import NavBar from "./NavBar";
 
 export default function PageWithNavbar() {
     return (
         <div className="container">
             <nav>
-                <NavBar />
+                <NavBar/>
             </nav>
 
-            <Outlet />
+            <Outlet/>
         </div>
     );
 }

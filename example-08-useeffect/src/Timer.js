@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import styles from './Timer.module.css';
 
 /**
  * Displays a timer allowing the user to start, and stop, a value from incrementing every second.
- * 
+ *
  * Shows a more complex example of useEffect(). This time, a cleanup function is used, along with an optional
  * value which controls whether or not the effect function will actually be called.
  */
@@ -20,6 +20,7 @@ export default function Timer() {
         let interval = null;
         if (isActive) {
             interval = setTimeout(() => setSeconds(seconds + 1), 1000);
+            console.log(interval)
         }
 
         /**
@@ -29,14 +30,13 @@ export default function Timer() {
         return () => clearTimeout(interval);
 
     }, [seconds, isActive]); /**
-                              * Usually, the side-effect function defined above will be called every time the
-                              * component re-renders. In this case though, we don't want that - we only want it
-                              * to be called again if the values of "seconds" or "isActive" changes. We can specify
-                              * an array as the second argument to useEffect(). If we do, then the effect function will
-                              * only be called if the values supplied in this array have changed since the last time
-                              * the effect was called.
-                              */
-
+     * Usually, the side-effect function defined above will be called every time the
+     * component re-renders. In this case though, we don't want that - we only want it
+     * to be called again if the values of "seconds" or "isActive" changes. We can specify
+     * an array as the second argument to useEffect(). If we do, then the effect function will
+     * only be called if the values supplied in this array have changed since the last time
+     * the effect was called.
+     */
 
     return (
         <div className={styles.timer}>

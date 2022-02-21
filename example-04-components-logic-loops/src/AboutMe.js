@@ -7,7 +7,7 @@
 function AboutMe({ name, like }) {
     return (
         <div>
-            <h1>About me</h1>
+            <h1>About me(AboutMe)</h1>
             <p>Hello, my name is {name}, and I like {like}!</p>
         </div>
     )
@@ -19,10 +19,10 @@ function AboutMe({ name, like }) {
 function AboutMeAlternative(props) {
     return (
         <div>
-            <h1>About me</h1>
+            <h1>About me (AboutMeAlternative)</h1>
             <p>Hello, my name is {props.name}, and I like {props.like}!</p>
         </div>
     )
 }
 
-export default AboutMe;
+export default AboutMeAlternative;
