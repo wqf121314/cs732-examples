@@ -25,7 +25,6 @@ function App() {
       <AuthContext.Provider value={user}>
         <UserInfoPage />
       </AuthContext.Provider>
-
     </div >
   );
 }
