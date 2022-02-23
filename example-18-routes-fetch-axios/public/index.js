@@ -7,12 +7,14 @@ window.addEventListener("load", () => {
     const txtB = document.querySelector("#inp-b");
     const spanResult = document.querySelector("#result");
 
-    btnGreeting.addEventListener("click", () => {
+    btnGreeting.addEventListener("click", async () => {
 
-        fetch("/api/greeting")
+        await fetch("/api/greeting")
             .then(response => response.json())
-            .then(json => spanGreeting.innerHTML = json.message);
-
+            .then(json => spanGreeting.innerHTML = json.message)
+            .catch((e) => {
+                console.log("---->", e)
+            });
     });
 
     btnAdd.addEventListener("click", () => {
